@@ -62,15 +62,6 @@ Use `launchUrl` when you want to open a standalone package directly.
 
 You can include **both** `courseFile` and `launchUrl` on one course if you want both actions available.
 
-## GitHub Pages deployment troubleshooting
-If the deployment workflow fails with errors like **permission denied to github-actions[bot]** or missing `gh-pages` branch:
-
-1. Confirm the workflow has write permissions (`contents: write`) — already configured in `.github/workflows/pages.yml`.
-2. In GitHub repository settings, ensure Actions has permission to create/update branches.
-3. Re-run the **Deploy GitHub Pages** workflow (or push a new commit).
-
-This workflow deploys from `main` to `gh-pages` and can create/reset `gh-pages` automatically using `force_orphan: true`.
-
 ## 🛠️ Develop locally
 ```bash
 python3 -m http.server 8000

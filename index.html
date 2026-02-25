@@ -1,1022 +1,240 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jacob Patterson - Instructional Design Portfolio</title>
-  <meta name="description" content="Instructional design portfolio featuring SCORM and web-based learning experiences built for measurable outcomes." />
-
-  <style>
-    /* -----------------------------
-      3-COLOR SYSTEM (strict)
-      Forest: #123524
-      Sand:   #EFE6D8
-      Sky:    #3FA9F5
-      All other tones are derived via opacity of these colors.
-    ------------------------------ */
-    :root{
-      --forest: #123524;
-      --sand: #EFE6D8;
-      --sky: #3FA9F5;
-
-      /* Derived via opacity (still 3 colors) */
-      --ink: rgba(18, 53, 36, 0.92);
-      --ink-2: rgba(18, 53, 36, 0.72);
-      --ink-3: rgba(18, 53, 36, 0.56);
-      --border: rgba(18, 53, 36, 0.12);
-      --shadow-1: 0 10px 30px rgba(18, 53, 36, 0.14);
-      --shadow-2: 0 6px 16px rgba(18, 53, 36, 0.10);
-      --shadow-3: 0 2px 8px rgba(18, 53, 36, 0.08);
-      --radius-lg: 24px;
-      --radius-md: 18px;
-      --radius-sm: 14px;
-
-      --max: 1120px;
-    }
-
-    *{ box-sizing: border-box; }
-    html,body{ height:100%; }
-
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--ink);
-      background:
-        radial-gradient(1200px 700px at 12% 0%, rgba(63,169,245,0.10), rgba(63,169,245,0.00) 55%),
-        radial-gradient(1000px 700px at 100% 12%, rgba(18,53,36,0.08), rgba(18,53,36,0.00) 60%),
-        linear-gradient(180deg, rgba(239,230,216,1) 0%, rgba(239,230,216,1) 100%);
-      background-color: var(--sand);
-    }
-
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ text-decoration: none; }
-
-    .wrap{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 28px 22px 60px;
-    }
-
-    /* Top nav */
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom: 18px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 220px;
-    }
-
-    .mark{
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background:
-        radial-gradient(24px 24px at 30% 28%, rgba(63,169,245,0.55), rgba(63,169,245,0) 62%),
-        linear-gradient(135deg, rgba(18,53,36,1), rgba(18,53,36,0.92));
-      box-shadow: var(--shadow-3);
-      border: 1px solid rgba(239,230,216,0.18);
-    }
-
-    .brand h1{
-      font-size: 14px;
-      margin:0;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink-2);
-      font-weight: 700;
-    }
-
-    .brand p{
-      margin: 2px 0 0;
-      font-size: 13px;
-      color: var(--ink-3);
-      font-weight: 600;
-    }
-
-    .navlinks{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-
-    .pill{
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: rgba(239,230,216,0.65);
-      box-shadow: 0 1px 0 rgba(18,53,36,0.06);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink-2);
-      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
-    }
-    .pill:hover{
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-3);
-      background: rgba(239,230,216,0.85);
-    }
-
-    /* Hero */
-    .hero{
-      border-radius: var(--radius-lg);
-      padding: 34px 34px 26px;
-      background:
-        radial-gradient(900px 400px at 6% 0%, rgba(63,169,245,0.22), rgba(63,169,245,0) 58%),
-        radial-gradient(700px 420px at 90% 10%, rgba(239,230,216,0.20), rgba(239,230,216,0) 60%),
-        linear-gradient(180deg, rgba(18,53,36,1), rgba(18,53,36,0.93));
-      box-shadow: var(--shadow-1);
-      border: 1px solid rgba(239,230,216,0.14);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 22px;
-      align-items: end;
-    }
-
-    .hero h2{
-      margin: 0 0 10px;
-      color: rgba(239,230,216,0.96);
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-    }
-
-    .hero p{
-      margin: 0 0 18px;
-      color: rgba(239,230,216,0.84);
-      font-size: 15.5px;
-      line-height: 1.5;
-      max-width: 66ch;
-      font-weight: 600;
-    }
-
-    .meta-row{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items:center;
-      margin-top: 6px;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 9px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(239,230,216,0.18);
-      background: rgba(239,230,216,0.08);
-      color: rgba(239,230,216,0.86);
-      font-size: 12.5px;
-      font-weight: 750;
-      letter-spacing: 0.02em;
-    }
-
-    .cta-row{
-      display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      align-items:center;
-    }
-
-    .btn{
-      appearance:none;
-      border: 0;
-      cursor:pointer;
-      border-radius: 14px;
-      padding: 12px 14px;
-      font-weight: 850;
-      letter-spacing: 0.01em;
-      transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease, background 140ms ease;
-      user-select:none;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      text-decoration:none;
-      font-size: 13.5px;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .btn-primary{
-      background: rgba(63,169,245,1);
-      color: rgba(18,53,36,0.95);
-      box-shadow: 0 10px 24px rgba(63,169,245,0.24), 0 4px 10px rgba(18,53,36,0.18);
-      border: 1px solid rgba(239,230,216,0.14);
-    }
-    .btn-primary:hover{
-      transform: translateY(-2px);
-      filter: brightness(0.98);
-    }
-
-    .btn-ghost{
-      background: rgba(239,230,216,0.10);
-      color: rgba(239,230,216,0.92);
-      border: 1px solid rgba(239,230,216,0.18);
-      box-shadow: 0 2px 8px rgba(18,53,36,0.14);
-    }
-    .btn-ghost:hover{
-      transform: translateY(-2px);
-      background: rgba(239,230,216,0.14);
-    }
-
-    .icon{
-      width: 18px;
-      height: 18px;
-      display:inline-block;
-    }
-
-    /* Sections */
-    .section{
-      margin-top: 22px;
-      padding-top: 10px;
-    }
-
-    .section-header{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 14px;
-      margin: 24px 0 14px;
-    }
-
-    .section-title{
-      margin:0;
-      font-size: 16px;
-      letter-spacing: -0.01em;
-    }
-
-    .section-sub{
-      margin: 4px 0 0;
-      color: var(--ink-2);
-      font-weight: 650;
-      font-size: 13.5px;
-      max-width: 85ch;
-      line-height: 1.45;
-    }
-
-    .filters{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-
-    .select{
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(239,230,216,0.70);
-      padding: 10px 12px;
-      font-weight: 800;
-      color: var(--ink-2);
-      outline: none;
-      box-shadow: 0 1px 0 rgba(18,53,36,0.06);
-    }
-
-    /* Cards grid */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-    }
-
-    .card{
-      grid-column: span 4;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      background: rgba(239,230,216,0.70);
-      box-shadow: var(--shadow-2);
-      overflow:hidden;
-      position: relative;
-      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
-      min-height: 220px;
-    }
-
-    .card:hover{
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-1);
-      background: rgba(239,230,216,0.85);
-    }
-
-    .card:focus-within{
-      outline: 3px solid rgba(63,169,245,0.55);
-      outline-offset: 3px;
-    }
-
-    .card-top{
-      padding: 16px 16px 10px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 12px;
-    }
-
-    .card-title{
-      margin:0;
-      font-size: 15px;
-      letter-spacing: -0.01em;
-      font-weight: 900;
-      line-height: 1.15;
-      color: var(--ink);
-    }
-
-    .card-meta{
-      margin: 8px 0 0;
-      color: var(--ink-2);
-      font-weight: 750;
-      font-size: 12.5px;
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items:center;
-    }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap: 7px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(18,53,36,0.14);
-      background: rgba(239,230,216,0.55);
-      color: var(--ink-2);
-      font-size: 12px;
-      font-weight: 850;
-      letter-spacing: 0.01em;
-    }
-
-    .card-body{
-      padding: 0 16px 14px;
-    }
-
-    .card-desc{
-      margin: 8px 0 12px;
-      color: var(--ink-2);
-      font-weight: 650;
-      font-size: 13.5px;
-      line-height: 1.45;
-    }
-
-    .impact{
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(18,53,36,0.10);
-      background: rgba(18,53,36,0.05);
-      padding: 10px 12px;
-      display:grid;
-      gap: 6px;
-    }
-
-    .impact .row{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      color: var(--ink-2);
-      font-weight: 780;
-      font-size: 12.8px;
-      line-height: 1.35;
-    }
-
-    .dot{
-      width: 8px;
-      height: 8px;
-      margin-top: 5px;
-      border-radius: 999px;
-      background: rgba(63,169,245,1);
-      flex: 0 0 auto;
-      box-shadow: 0 6px 12px rgba(63,169,245,0.22);
-    }
-
-    .card-actions{
-      padding: 0 16px 16px;
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items:center;
-      justify-content:space-between;
-    }
-
-    .link{
-      font-weight: 900;
-      color: rgba(18,53,36,0.88);
-      border-bottom: 1px solid rgba(18,53,36,0.16);
-      padding-bottom: 2px;
-      font-size: 13px;
-    }
-    .link:hover{
-      border-bottom-color: rgba(63,169,245,0.70);
-    }
-
-    .mini{
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-size: 13px;
-    }
-
-    /* Viewed badge */
-    .viewed{
-      position:absolute;
-      top: 12px;
-      right: 12px;
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(18,53,36,0.92);
-      border: 1px solid rgba(239,230,216,0.14);
-      color: rgba(239,230,216,0.92);
-      box-shadow: var(--shadow-3);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      opacity: 0;
-      transform: translateY(-6px);
-      pointer-events:none;
-      transition: opacity 180ms ease, transform 180ms ease;
-    }
-    .viewed.show{
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .check{
-      width: 16px;
-      height: 16px;
-      border-radius: 999px;
-      background: rgba(63,169,245,1);
-      display:grid;
-      place-items:center;
-      box-shadow: 0 8px 18px rgba(63,169,245,0.22);
-      flex: 0 0 auto;
-    }
-    .check svg{
-      width: 11px;
-      height: 11px;
-    }
-
-    /* Two-column content blocks */
-    .twocol{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .panel{
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      background: rgba(239,230,216,0.70);
-      box-shadow: var(--shadow-2);
-      padding: 16px 16px 14px;
-    }
-    .panel h3{
-      margin:0 0 8px;
-      font-size: 14px;
-      letter-spacing: -0.01em;
-      font-weight: 950;
-    }
-    .panel p{
-      margin:0;
-      color: var(--ink-2);
-      font-weight: 650;
-      line-height: 1.5;
-      font-size: 13.5px;
-      max-width: 80ch;
-    }
-
-    .list{
-      margin: 12px 0 0;
-      padding: 0;
-      list-style: none;
-      display:grid;
-      gap: 10px;
-    }
-    .list li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      color: var(--ink-2);
-      font-weight: 750;
-      font-size: 13.2px;
-      line-height: 1.45;
-    }
-    .list .bullet{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      margin-top: 5px;
-      background: rgba(63,169,245,1);
-      flex: 0 0 auto;
-      box-shadow: 0 6px 14px rgba(63,169,245,0.18);
-    }
-
-    /* Footer */
-    .footer{
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(18,53,36,0.12);
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      color: var(--ink-2);
-      font-weight: 750;
-      font-size: 13px;
-    }
-
-    .fine{
-      color: var(--ink-3);
-      font-weight: 750;
-      max-width: 70ch;
-      line-height: 1.45;
-    }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .cta-row{ justify-content:flex-start; }
-      .card{ grid-column: span 6; }
-      .twocol{ grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 640px){
-      .wrap{ padding: 22px 16px 54px; }
-      .hero{ padding: 26px 18px 18px; }
-      .card{ grid-column: span 12; }
-      .navlinks{ justify-content:flex-start; }
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      *{ transition: none !important; scroll-behavior:auto !important; }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="wrap">
-
-    <!-- Top bar -->
-    <header class="topbar">
-      <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
-        <div>
-          <h1>Instructional Design Portfolio</h1>
-          <p>Jacob Patterson - SCORM + Web Learning</p>
-        </div>
-      </div>
-
-      <nav class="navlinks" aria-label="Primary navigation">
-        <a class="pill" href="#work">Work</a>
-        <a class="pill" href="#approach">Approach</a>
-        <a class="pill" href="#capabilities">Capabilities</a>
-        <a class="pill" href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <div>
-          <h2 id="hero-title">Learning Experiences Built for Performance</h2>
-          <p>
-            I design and ship learning that people actually finish, remember, and use.
-            The work below includes SCORM and web-based experiences, built with clear objectives, clean UX,
-            and measurable outcomes.
-          </p>
-
-          <div class="meta-row" aria-label="Highlights">
-            <span class="tag">Outcome-driven design</span>
-            <span class="tag">Scenario + feedback loops</span>
-            <span class="tag">Accessible + scalable</span>
-          </div>
-        </div>
-
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#work">
-            <span aria-hidden="true" class="icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M8 5l10 7-10 7V5z" fill="rgba(18,53,36,0.92)"></path>
-              </svg>
-            </span>
-            View featured course
-          </a>
-
-          <a class="btn btn-ghost" href="#approach">
-            <span aria-hidden="true" class="icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9z" stroke="rgba(239,230,216,0.9)" stroke-width="2"></path>
-                <path d="M12 8v5" stroke="rgba(239,230,216,0.9)" stroke-width="2" stroke-linecap="round"></path>
-                <path d="M12 16h.01" stroke="rgba(239,230,216,0.9)" stroke-width="3" stroke-linecap="round"></path>
-              </svg>
-            </span>
-            How I work
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Work -->
-    <section class="section" id="work" aria-labelledby="work-title">
-      <div class="section-header">
-        <div>
-          <h3 class="section-title" id="work-title">Featured work</h3>
-          <p class="section-sub">
-            A mix of polished builds and “shells” that show how I think: clear objectives, smart interactions,
-            and tight narrative structure. Click any card to mark it viewed.
-          </p>
-        </div>
-
-        <div class="filters" aria-label="Filters">
-          <select class="select" id="filterType" aria-label="Filter by type">
-            <option value="all">All formats</option>
-            <option value="scorm">SCORM</option>
-            <option value="web">Web</option>
-          </select>
-          <select class="select" id="filterFocus" aria-label="Filter by focus">
-            <option value="all">All focus areas</option>
-            <option value="scenario">Scenario-based</option>
-            <option value="onboarding">Onboarding</option>
-            <option value="product">Product training</option>
-            <option value="leadership">Leadership enablement</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="grid" id="cards" aria-label="Portfolio cards">
-        <!-- Cards injected by JS -->
-      </div>
-    </section>
-
-    <!-- Approach -->
-    <section class="section" id="approach" aria-labelledby="approach-title">
-      <div class="section-header">
-        <div>
-          <h3 class="section-title" id="approach-title">How I build learning</h3>
-          <p class="section-sub">
-            Clean process, no theater. Define the performance goal, design the moments of decision, ship fast,
-            then measure what changed.
-          </p>
-        </div>
-      </div>
-
-      <div class="twocol">
-        <div class="panel">
-          <h3>Design principles</h3>
-          <ul class="list">
-            <li><span class="bullet" aria-hidden="true"></span>Start with the behavior, not the content. If the learner can’t do the thing at the end, the module failed.</li>
-            <li><span class="bullet" aria-hidden="true"></span>Lower cognitive load. Fewer words, stronger structure, and feedback that actually teaches.</li>
-            <li><span class="bullet" aria-hidden="true"></span>Respect the learner. Clear pace, purposeful interactions, and no busywork clicks.</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>Typical deliverables</h3>
-          <ul class="list">
-            <li><span class="bullet" aria-hidden="true"></span>Front-end analysis, audience + context, constraints, success metrics</li>
-            <li><span class="bullet" aria-hidden="true"></span>Storyboards, scripts, decision maps, and prototype screens</li>
-            <li><span class="bullet" aria-hidden="true"></span>SCORM / web build, accessibility pass, QA, publish + handoff</li>
-            <li><span class="bullet" aria-hidden="true"></span>Evaluation plan: completion, accuracy, time-to-competency, field outcomes</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Capabilities -->
-    <section class="section" id="capabilities" aria-labelledby="caps-title">
-      <div class="section-header">
-        <div>
-          <h3 class="section-title" id="caps-title">Tools and capabilities</h3>
-          <p class="section-sub">
-            Tools are just tools. The real value is translating messy business needs into learning people can use.
-          </p>
-        </div>
-      </div>
-
-      <div class="twocol">
-        <div class="panel">
-          <h3>Build and ship</h3>
-          <ul class="list">
-            <li><span class="bullet" aria-hidden="true"></span>Articulate Storyline / Rise 360 (SCORM packaging, interactions, branching)</li>
-            <li><span class="bullet" aria-hidden="true"></span>Web learning (HTML/CSS/JS shells, interactive prototypes)</li>
-            <li><span class="bullet" aria-hidden="true"></span>Figma (flows, components, design systems)</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>Strategy and measurement</h3>
-          <ul class="list">
-            <li><span class="bullet" aria-hidden="true"></span>Performance-based objectives, rubrics, and assessment design</li>
-            <li><span class="bullet" aria-hidden="true"></span>Learning analytics (completion, confidence lift, accuracy, time-to-competency)</li>
-            <li><span class="bullet" aria-hidden="true"></span>Stakeholder alignment, narrative building, and exec-ready summaries</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="section-header">
-        <div>
-          <h3 class="section-title" id="contact-title">Contact</h3>
-          <p class="section-sub">
-            Want the short version? I build learning that people can use on Monday morning. If you’re hiring,
-            I’ll walk you through one course end-to-end: problem, design decisions, constraints, and results.
-          </p>
-        </div>
-      </div>
-
-      <div class="twocol">
-        <div class="panel">
-          <h3>Quick links</h3>
-          <ul class="list">
-            <li><span class="bullet" aria-hidden="true"></span><a class="link" href="#" aria-label="Email link (placeholder)">Email (add your address)</a></li>
-            <li><span class="bullet" aria-hidden="true"></span><a class="link" href="#" aria-label="LinkedIn link (placeholder)">LinkedIn (add your profile)</a></li>
-            <li><span class="bullet" aria-hidden="true"></span><a class="link" href="#" aria-label="Resume link (placeholder)">Resume (add a PDF link)</a></li>
-          </ul>
-          <p class="fine" style="margin-top:12px;">
-            Replace the placeholder links in the HTML with your real URLs. Keep it simple.
-          </p>
-        </div>
-
-        <div class="panel">
-          <h3>One-sentence pitch</h3>
-          <p>
-            I design and develop learning experiences that reduce time-to-competency and increase on-the-job performance,
-            using scenario-driven interactions, clean UX, and measurable outcomes.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div>
-        <strong style="color: rgba(18,53,36,0.92);">Jacob Patterson</strong><br/>
-        <span class="fine">Instructional Design - SCORM - Web Learning</span>
-      </div>
-      <div class="fine">
-        Tip: click a card to mark it viewed. That check mark is saved locally in your browser.
-      </div>
-    </footer>
-
-  </div>
-
-  <script>
-    // ---------------------------------------------------
-    // Portfolio data (1 real + shells)
-    // Replace URLs with your actual SCORM/web links later.
-    // ---------------------------------------------------
-    const courses = [
-      {
-        id: "portfolio-course-001",
-        title: "Course Portfolio - Featured Experience",
-        type: "scorm",
-        focus: "product",
-        author: "Jacob Patterson",
-        duration: "15-20 min",
-        format: "SCORM / Web",
-        stack: "Storyline | SCORM 1.2",
-        description:
-          "A polished showcase course designed to demonstrate structure, interaction design, and clean learner flow. Built to be fast to navigate, easy to understand, and focused on performance outcomes.",
-        impact: [
-          "Clear objectives and decision points (not a content dump)",
-          "Built-in knowledge checks with targeted feedback",
-          "Production-ready UI patterns and accessibility basics"
-        ],
-        launchUrl: "course-viewer.html?course=course.json",
-        caseStudyUrl: "#approach",
-        featured: true
-      },
-      {
-        id: "shell-scenario-002",
-        title: "Compliance Scenario Simulation (Shell)",
-        type: "scorm",
-        focus: "scenario",
-        author: "Jacob Patterson",
-        duration: "20 min",
-        format: "SCORM",
-        stack: "Storyline | Branching",
-        description:
-          "Branching simulation focused on high-risk decisions. Designed to train judgment under realistic constraints, with feedback that teaches, not scolds.",
-        impact: [
-          "Branch logic map + remediation loops",
-          "Confidence check before final decision",
-          "Reportable completion and assessment score"
-        ],
-        launchUrl: "#",
-        caseStudyUrl: "#"
-      },
-      {
-        id: "shell-onboarding-003",
-        title: "New Manager Onboarding Sprint (Shell)",
-        type: "web",
-        focus: "onboarding",
-        author: "Jacob Patterson",
-        duration: "12 min",
-        format: "Web",
-        stack: "HTML | UX Flow",
-        description:
-          "Fast onboarding module built for managers who need the essentials without fluff. Short, structured, and designed for immediate application.",
-        impact: [
-          "Role clarity and early wins framework",
-          "Scenario prompts + reflection checkpoints",
-          "Manager toolkit download (placeholder)"
-        ],
-        launchUrl: "#",
-        caseStudyUrl: "#"
-      },
-      {
-        id: "shell-product-004",
-        title: "Product Readiness Accelerator (Shell)",
-        type: "scorm",
-        focus: "product",
-        author: "Jacob Patterson",
-        duration: "14 min",
-        format: "SCORM",
-        stack: "Storyline | Scenario gates",
-        description:
-          "A product training experience focused on confidence-to-field. Learners apply feature knowledge in customer-facing moments under time pressure.",
-        impact: [
-          "Faster product positioning accuracy",
-          "Decision checkpoints aligned to sales motions",
-          "Reusable scenario framework for launch updates"
-        ],
-        launchUrl: "#",
-        caseStudyUrl: "#"
-      },
-      {
-        id: "shell-leadership-005",
-        title: "Leadership Feedback Workshop (Shell)",
-        type: "web",
-        focus: "leadership",
-        author: "Jacob Patterson",
-        duration: "10-15 min",
-        format: "Web",
-        stack: "Interactive prompts",
-        description:
-          "A workshop-style experience for practicing feedback conversations, including preparation, delivery, and follow-through in common team scenarios.",
-        impact: [
-          "Conversation framework + practice runs",
-          "Choose-your-path responses with outcomes",
-          "Printable checklist (placeholder)"
-        ],
-        launchUrl: "#",
-        caseStudyUrl: "#"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Portfolio</title>
+    <style>
+      :root {
+        --deep-forest: #123524;
+        --light-sand: #efe6d8;
+        --sky-blue: #3fa9f5;
+        --card-cream: #f8f3ea;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       }
-    ];
 
-    // ---------------------------------------------------
-    // Viewed state (localStorage)
-    // ---------------------------------------------------
-    const VIEW_KEY = "id_portfolio_viewed_map_v1";
-
-    function getViewedMap(){
-      try{
-        return JSON.parse(localStorage.getItem(VIEW_KEY) || "{}");
-      }catch(e){
-        return {};
+      * {
+        box-sizing: border-box;
       }
-    }
 
-    function setViewed(id){
-      const map = getViewedMap();
-      map[id] = { viewed: true, ts: Date.now() };
-      localStorage.setItem(VIEW_KEY, JSON.stringify(map));
-    }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--deep-forest);
+        background:
+          radial-gradient(circle at 12% 18%, rgba(63, 169, 245, 0.2) 0 18%, transparent 45%),
+          radial-gradient(circle at 90% 8%, rgba(18, 53, 36, 0.1) 0 16%, transparent 50%),
+          var(--light-sand);
+      }
 
-    function isViewed(id){
-      const map = getViewedMap();
-      return !!(map[id] && map[id].viewed);
-    }
+      .wrapper {
+        width: min(80vw, 1280px);
+        margin: 0 auto;
+        padding: clamp(2rem, 4vw, 3.5rem) 0 4rem;
+      }
 
-    // ---------------------------------------------------
-    // Render cards with filtering
-    // ---------------------------------------------------
-    const cardsEl = document.getElementById("cards");
-    const filterTypeEl = document.getElementById("filterType");
-    const filterFocusEl = document.getElementById("filterFocus");
+      .hero {
+        background: linear-gradient(140deg, rgba(18, 53, 36, 0.97), rgba(24, 76, 53, 0.95));
+        color: var(--light-sand);
+        border-radius: 20px;
+        padding: clamp(1.25rem, 2.5vw, 2.5rem);
+        box-shadow: 0 20px 40px rgba(18, 53, 36, 0.26);
+      }
 
-    function svgCheck(){
-      return `
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M20 6L9 17l-5-5" stroke="rgba(18,53,36,0.92)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-      `;
-    }
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: 0.01em;
+      }
 
-    function svgLaunch(){
-      return `
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 3h7v7" stroke="rgba(18,53,36,0.92)" stroke-width="2" stroke-linecap="round"></path>
-          <path d="M21 3l-9 9" stroke="rgba(18,53,36,0.92)" stroke-width="2" stroke-linecap="round"></path>
-          <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4" stroke="rgba(18,53,36,0.92)" stroke-width="2" stroke-linecap="round"></path>
-        </svg>
-      `;
-    }
+      .lead {
+        margin: 0.85rem 0 0;
+        max-width: 68ch;
+        line-height: 1.55;
+        color: rgba(239, 230, 216, 0.94);
+      }
 
-    function render(){
-      const type = filterTypeEl.value;
-      const focus = filterFocusEl.value;
+      .grid {
+        margin-top: 1.8rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
 
-      const items = courses.filter(c => {
-        const typeOk = (type === "all") || (c.type === type);
-        const focusOk = (focus === "all") || (c.focus === focus);
-        return typeOk && focusOk;
-      });
+      @media (min-width: 740px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
 
-      // Featured first
-      items.sort((a,b) => (b.featured === true) - (a.featured === true));
+      @media (min-width: 1120px) {
+        .grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
 
-      cardsEl.innerHTML = items.map(course => {
-        const viewed = isViewed(course.id);
-        const viewedClass = viewed ? "show" : "";
-        const featuredChip = course.featured ? `<span class="chip">Featured</span>` : "";
-        return `
-          <article class="card" data-id="${course.id}" tabindex="-1" aria-label="${course.title}">
-            <div class="viewed ${viewedClass}" aria-hidden="${viewed ? "false" : "true"}" title="Viewed">
-              <span class="check">${svgCheck()}</span>
-              Viewed
-            </div>
+      .card {
+        position: relative;
+        background: var(--card-cream);
+        border: 1px solid rgba(18, 53, 36, 0.2);
+        border-radius: 16px;
+        padding: 1rem 1rem 1.15rem;
+        box-shadow: 0 10px 24px rgba(18, 53, 36, 0.14);
+        display: flex;
+        flex-direction: column;
+        gap: 0.56rem;
+        isolation: isolate;
+      }
 
-            <div class="card-top">
-              <div>
-                <h4 class="card-title">${course.title}</h4>
-                <div class="card-meta">
-                  ${featuredChip}
-                  <span class="chip">${course.format}</span>
-                  <span class="chip">${course.duration}</span>
-                </div>
-              </div>
-            </div>
+      .card::before {
+        content: '';
+        position: absolute;
+        inset: 10px -10px -10px 10px;
+        border-radius: 16px;
+        background: rgba(63, 169, 245, 0.18);
+        z-index: -1;
+      }
 
-            <div class="card-body">
-              <p class="card-desc">${course.description}</p>
+      .card h2 {
+        margin: 0;
+        font-size: 1.15rem;
+        color: var(--deep-forest);
+      }
 
-              <div class="impact" aria-label="Impact highlights">
-                ${course.impact.map(line => `
-                  <div class="row"><span class="dot" aria-hidden="true"></span><span>${line}</span></div>
-                `).join("")}
-              </div>
-            </div>
+      .meta {
+        margin: 0;
+        font-size: 0.88rem;
+        color: rgba(18, 53, 36, 0.72);
+      }
 
-            <div class="card-actions">
-              <a class="btn btn-primary mini" href="${course.launchUrl}" data-action="launch" data-id="${course.id}" target="_blank" rel="noopener">
-                <span class="icon">${svgLaunch()}</span>
-                Launch experience
-              </a>
-              <a class="link" href="${course.caseStudyUrl}" data-action="case" data-id="${course.id}">
-                View case study
-              </a>
-            </div>
-          </article>
-        `;
-      }).join("");
+      .desc {
+        margin: 0.2rem 0 0.75rem;
+        line-height: 1.45;
+        color: rgba(18, 53, 36, 0.85);
+      }
 
-      // Card click marks viewed
-      cardsEl.querySelectorAll(".card").forEach(card => {
-        card.addEventListener("click", () => {
-          const id = card.getAttribute("data-id");
-          setViewed(id);
-          const badge = card.querySelector(".viewed");
-          badge.classList.add("show");
-        });
-      });
+      .actions {
+        margin-top: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
 
-      // Launch / case study also mark viewed
-      cardsEl.querySelectorAll("[data-action]").forEach(link => {
-        link.addEventListener("click", () => {
-          const id = link.getAttribute("data-id");
-          setViewed(id);
+      .btn {
+        border: 1px solid transparent;
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 0.55rem 0.88rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+      }
 
-          // Ensure badge updates even if click is on link
-          const card = cardsEl.querySelector(`.card[data-id="${id}"]`);
-          if(card){
-            const badge = card.querySelector(".viewed");
-            badge.classList.add("show");
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: var(--sky-blue);
+        color: #082a44;
+        box-shadow: 0 5px 12px rgba(63, 169, 245, 0.35);
+      }
+
+      .btn-secondary {
+        background: rgba(18, 53, 36, 0.08);
+        border-color: rgba(18, 53, 36, 0.22);
+        color: var(--deep-forest);
+      }
+
+      .empty {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        border-radius: 12px;
+        border: 1px dashed rgba(18, 53, 36, 0.4);
+        background: rgba(248, 243, 234, 0.95);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrapper">
+      <section class="hero" aria-label="Portfolio header">
+        <h1>Course Portfolio</h1>
+        <p class="lead">Explore and launch authored SCORM/web learning experiences. Add or edit course entries in <code>courses.json</code>.</p>
+      </section>
+
+      <section id="course-grid" class="grid" aria-live="polite"></section>
+      <div id="empty-state" class="empty" hidden>
+        No courses found in <code>courses.json</code>. Add at least one course entry to begin.
+      </div>
+    </main>
+
+    <script>
+      async function loadCourses() {
+        const grid = document.getElementById('course-grid');
+        const emptyState = document.getElementById('empty-state');
+
+        try {
+          const response = await fetch('courses.json');
+          if (!response.ok) {
+            throw new Error('Could not load courses.json');
           }
-        });
-      });
-    }
 
-    filterTypeEl.addEventListener("change", render);
-    filterFocusEl.addEventListener("change", render);
+          const data = await response.json();
+          const courses = Array.isArray(data.courses) ? data.courses : [];
 
-    render();
-  </script>
-</body>
+          if (!courses.length) {
+            emptyState.hidden = false;
+            return;
+          }
+
+          for (const course of courses) {
+            const card = document.createElement('article');
+            card.className = 'card';
+
+            const title = document.createElement('h2');
+            title.textContent = course.title || 'Untitled Course';
+
+            const meta = document.createElement('p');
+            meta.className = 'meta';
+            meta.textContent = [course.type || 'Course', course.author].filter(Boolean).join(' • ');
+
+            const desc = document.createElement('p');
+            desc.className = 'desc';
+            desc.textContent = course.description || 'No description provided.';
+
+            const actions = document.createElement('div');
+            actions.className = 'actions';
+
+            if (course.courseFile) {
+              const launch = document.createElement('a');
+              launch.className = 'btn btn-primary';
+              launch.href = `course-viewer.html?course=${encodeURIComponent(course.courseFile)}`;
+              launch.target = '_blank';
+              launch.rel = 'noopener noreferrer';
+              launch.textContent = 'Launch in new tab';
+              actions.appendChild(launch);
+            }
+
+            if (course.launchUrl) {
+              const open = document.createElement('a');
+              open.className = 'btn btn-secondary';
+              open.href = course.launchUrl;
+              open.target = '_blank';
+              open.rel = 'noopener noreferrer';
+              open.textContent = 'Open package';
+              actions.appendChild(open);
+            }
+
+            card.append(title, meta, desc, actions);
+            grid.appendChild(card);
+          }
+        } catch (error) {
+          emptyState.hidden = false;
+          emptyState.textContent = `Could not load courses.json (${error.message}).`;
+        }
+      }
+
+      loadCourses();
+    </script>
+  </body>
 </html>
