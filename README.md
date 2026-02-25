@@ -1,72 +1,74 @@
-# LMS Portfolio
+# LMS Portfolio (GitHub Pages Course Launcher)
 
-Welcome to my Learning Management System Portfolio. This repository is set up as a **landing page + course catalog** so you can keep adding/updating courses over time.
+This repo is a **simple landing page + course catalog**.
 
-## 🔗 View Live
-Visit: `https://pattersonmjacob.github.io/portfolio` once GitHub Pages is enabled or the deployment workflow has run.
+- Add your exported course package files to a folder.
+- Add one entry to `courses.json`.
+- Push to GitHub.
+- The course appears on the landing page.
 
-> **Automatic deployment**
-> A GitHub Actions workflow (`.github/workflows/pages.yml`) publishes this repo to GitHub Pages whenever you push to `main`.
+## Live URL
+`https://pattersonmjacob.github.io/portfolio`
 
-## Recommended repo structure for ongoing updates
-Use one folder per course so updates are isolated and easier to maintain:
+## Recommended folder layout
 
 ```text
 portfolio/
-├─ index.html                  # landing page (course cards)
-├─ courses.json                # catalog used by landing page
-├─ course-viewer.html          # shared viewer for Evo-style course.json files
+├─ index.html
+├─ courses.json
+├─ course-viewer.html
 ├─ courses/
-│  ├─ sales-onboarding/
+│  ├─ portfolio-en-2/
+│  │  ├─ index.html
 │  │  ├─ course.json
-│  │  └─ assets/... (optional)
-│  ├─ compliance-2026/
-│  │  ├─ course.json
-│  │  └─ assets/... (optional)
-│  └─ leadership-basics/
-│     └─ index.html            # optional direct package launch
+│  │  ├─ assets/
+│  │  ├─ ev-icons/
+│  │  ├─ manifest.json
+│  │  └─ manifest.jws.json
+│  └─ another-course/
+│     ├─ index.html
+│     └─ assets/
 └─ docs/
-   └─ COURSE_STRUCTURE.md      # maintenance workflow
+   └─ COURSE_STRUCTURE.md
 ```
 
-## How to add or update courses
-1. Create/update the course in its own folder, for example:
-   - `courses/sales-onboarding/course.json`
-2. Add/update the matching entry in `courses.json`.
-3. Commit and push to `main`.
+## `courses.json` examples
 
-### `courses.json` patterns
-Use `courseFile` when the course should open in the shared viewer.
+### 1) Launch package directly (Evolve export with its own `index.html`)
 
 ```json
 {
-  "title": "Sales Onboarding",
-  "description": "Interactive onboarding for the sales team.",
-  "author": "Your Name",
-  "type": "SCORM 1.2",
-  "courseFile": "courses/sales-onboarding/course.json"
+  "title": "Portfolio_en (Direct)",
+  "description": "Standalone package export from Evolve.",
+  "author": "Jacob Patterson",
+  "type": "Web package",
+  "launchUrl": "courses/portfolio-en-2/index.html"
 }
 ```
 
-Use `launchUrl` when you want to open a standalone package directly.
+### 2) Launch through shared viewer (using `course.json`)
 
 ```json
 {
-  "title": "Leadership Basics (Standalone)",
-  "description": "Standalone exported package.",
-  "author": "Your Name",
-  "type": "Web Package",
-  "launchUrl": "courses/leadership-basics/index.html"
+  "title": "Portfolio Course (Viewer)",
+  "description": "Uses the shared course viewer shell.",
+  "author": "Jacob Patterson",
+  "type": "SCORM/Web",
+  "courseFile": "courses/portfolio-en-2/course.json"
 }
 ```
 
-You can include **both** `courseFile` and `launchUrl` on one course if you want both actions available.
+## Add a new course in 3 steps
 
-## 🛠️ Develop locally
+1. Upload your exported package into `courses/<slug>/`.
+2. Add a matching object in `courses.json`.
+3. Commit + push to `main`.
+
+GitHub Pages deploys automatically from the workflow in `.github/workflows/pages.yml`.
+
+## Local test
+
 ```bash
 python3 -m http.server 8000
 # open http://localhost:8000
 ```
-
-## More detail
-See `docs/COURSE_STRUCTURE.md` for a practical update checklist and naming conventions.

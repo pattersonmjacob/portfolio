@@ -3,733 +3,268 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jacob Patterson | Instructional Design Portfolio</title>
-  <meta name="description" content="Instructional design portfolio featuring SCORM and web-based learning experiences built for measurable performance outcomes." />
-
+  <title>Jacob Patterson | Learning Portfolio</title>
+  <meta name="description" content="Simple GitHub Pages landing page for launching Evolve and SCORM web course packages." />
   <style>
-    :root{
+    :root {
       --forest: #123524;
-      --sand: #EFE6D8;
-      --sky: #3FA9F5;
-
-      --ink: rgba(18,53,36,0.94);
-      --ink-2: rgba(18,53,36,0.76);
-      --ink-3: rgba(18,53,36,0.58);
-      --border: rgba(18,53,36,0.14);
-      --shadow-1: 0 16px 38px rgba(18,53,36,0.16);
-      --shadow-2: 0 8px 20px rgba(18,53,36,0.10);
-      --shadow-3: 0 3px 10px rgba(18,53,36,0.08);
-      --radius-lg: 24px;
-      --radius-md: 18px;
-      --radius-sm: 12px;
-      --max: 1120px;
+      --sand: #efe6d8;
+      --sky: #3fa9f5;
+      --ink: rgba(18, 53, 36, 0.95);
+      --ink-soft: rgba(18, 53, 36, 0.72);
+      --line: rgba(18, 53, 36, 0.14);
+      --radius: 16px;
+      --shadow: 0 8px 22px rgba(18, 53, 36, 0.12);
+      --max: 980px;
     }
 
-    *{box-sizing:border-box;}
-    html,body{height:100%;}
+    * { box-sizing: border-box; }
 
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--ink);
-      background:
-        radial-gradient(980px 580px at 14% 0%, rgba(63,169,245,0.10), rgba(63,169,245,0) 58%),
-        radial-gradient(900px 500px at 100% 10%, rgba(18,53,36,0.08), rgba(18,53,36,0) 60%),
-        linear-gradient(180deg, rgba(239,230,216,1), rgba(239,230,216,1));
-      background-color: var(--sand);
-      line-height:1.45;
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--sand), #f6efe4);
+      line-height: 1.5;
     }
 
-    a{color:inherit;text-decoration:none;}
-
-    .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:26px 20px 56px;
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px 18px 48px;
     }
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:18px;
-      flex-wrap:wrap;
+    .hero {
+      background: linear-gradient(165deg, #133927, #1d4d35);
+      color: rgba(239, 230, 216, 0.95);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
     }
 
-    .brand{display:flex;align-items:center;gap:12px;}
-
-    .mark{
-      width:42px;
-      height:42px;
-      border-radius:12px;
-      background:
-        radial-gradient(24px 24px at 30% 26%, rgba(63,169,245,0.6), rgba(63,169,245,0) 64%),
-        linear-gradient(140deg, rgba(18,53,36,1), rgba(18,53,36,0.9));
-      border:1px solid rgba(239,230,216,0.18);
-      box-shadow:var(--shadow-3);
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.4rem, 3.6vw, 2rem);
+      line-height: 1.2;
     }
 
-    .brand h1{margin:0;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-2);}
-    .brand p{margin:2px 0 0;font-size:13px;color:var(--ink-3);font-weight:700;}
-
-    .navlinks{display:flex;gap:10px;flex-wrap:wrap;}
-
-    .pill{
-      padding:9px 12px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      background:rgba(239,230,216,0.66);
-      font-weight:800;
-      font-size:13px;
-      color:var(--ink-2);
-      transition:transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
-    }
-    .pill:hover{transform:translateY(-1px);box-shadow:var(--shadow-3);background:rgba(239,230,216,0.86);}
-    .pill:focus-visible{outline:3px solid rgba(63,169,245,0.58);outline-offset:2px;}
-
-    .hero{
-      border-radius:var(--radius-lg);
-      padding:34px 30px 24px;
-      background:
-        radial-gradient(850px 360px at 6% 0%, rgba(63,169,245,0.24), rgba(63,169,245,0) 60%),
-        radial-gradient(660px 350px at 92% 10%, rgba(239,230,216,0.2), rgba(239,230,216,0) 62%),
-        linear-gradient(180deg, rgba(18,53,36,1), rgba(18,53,36,0.92));
-      border:1px solid rgba(239,230,216,0.16);
-      box-shadow:var(--shadow-1);
+    .hero p {
+      margin: 0;
+      max-width: 68ch;
+      color: rgba(239, 230, 216, 0.85);
+      font-weight: 520;
     }
 
-    .hero-grid{display:grid;grid-template-columns:1.25fr 0.75fr;gap:20px;align-items:end;}
-
-    .hero h2{
-      margin:0 0 10px;
-      color:rgba(239,230,216,0.96);
-      font-size:clamp(30px,4.2vw,46px);
-      line-height:1.05;
-      letter-spacing:-0.02em;
-    }
-    .hero p{margin:0 0 16px;color:rgba(239,230,216,0.86);font-size:15.5px;font-weight:650;max-width:68ch;}
-
-    .meta-row{display:flex;flex-wrap:wrap;gap:10px;}
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 11px;
-      border-radius:999px;
-      border:1px solid rgba(239,230,216,0.2);
-      background:rgba(239,230,216,0.08);
-      color:rgba(239,230,216,0.86);
-      font-size:12.4px;
-      font-weight:800;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
     }
 
-    .cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
-
-    .btn{
-      border:0;
-      border-radius:12px;
-      padding:12px 14px;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-size:13.5px;
-      font-weight:860;
-      line-height:1;
-      white-space:nowrap;
-      transition:transform 140ms ease, filter 140ms ease, box-shadow 140ms ease, background 140ms ease;
-    }
-    .btn:hover{transform:translateY(-2px);}
-    .btn:focus-visible{outline:3px solid rgba(63,169,245,0.58);outline-offset:2px;}
-
-    .btn-primary{
-      background:rgba(63,169,245,1);
-      color:rgba(18,53,36,0.96);
-      box-shadow:0 8px 18px rgba(63,169,245,0.22), 0 4px 10px rgba(18,53,36,0.16);
-      border:1px solid rgba(239,230,216,0.14);
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 4px 14px rgba(18, 53, 36, 0.08);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .btn-ghost{
-      background:rgba(239,230,216,0.10);
-      color:rgba(239,230,216,0.92);
-      border:1px solid rgba(239,230,216,0.18);
-      box-shadow:0 2px 8px rgba(18,53,36,0.12);
+    .card h2 {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.3;
     }
 
-    .icon{width:18px;height:18px;display:inline-block;}
-
-    .section{margin-top:24px;scroll-margin-top:20px;}
-
-    .section-header{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:14px;
-      margin:20px 0 14px;
-      flex-wrap:wrap;
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
-    .section-title{margin:0;font-size:16px;letter-spacing:-0.01em;}
-    .section-sub{margin:4px 0 0;color:var(--ink-2);font-size:13.5px;font-weight:650;max-width:84ch;}
-
-    .filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
-
-    .select{
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:rgba(239,230,216,0.72);
-      color:var(--ink-2);
-      padding:9px 12px;
-      font-weight:820;
-      font-size:13px;
-      box-shadow:0 1px 0 rgba(18,53,36,0.06);
-    }
-    .select:focus-visible{outline:3px solid rgba(63,169,245,0.58);outline-offset:2px;}
-
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;}
-
-    .card{
-      grid-column:span 4;
-      border-radius:var(--radius-md);
-      border:1px solid var(--border);
-      background:rgba(239,230,216,0.74);
-      box-shadow:var(--shadow-2);
-      min-height:236px;
-      transition:transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
-      position:relative;
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-    }
-    .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-1);background:rgba(239,230,216,0.88);}
-    .card:focus-within{outline:3px solid rgba(63,169,245,0.58);outline-offset:3px;}
-
-    .card-top{padding:16px 16px 10px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
-    .card-title{margin:0;font-size:15px;line-height:1.2;letter-spacing:-0.01em;font-weight:900;color:var(--ink);}
-    .card-meta{margin:8px 0 0;display:flex;flex-wrap:nowrap;gap:8px;overflow:hidden;}
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      border-radius:999px;
-      border:1px solid rgba(18,53,36,0.16);
-      background:rgba(239,230,216,0.56);
-      color:var(--ink-2);
-      padding:6px 10px;
-      font-size:11.8px;
-      font-weight:840;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:100%;
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      background: rgba(255, 255, 255, 0.4);
     }
 
-    .card-body{padding:0 16px 14px;flex:1;}
-    .card-desc{margin:6px 0 12px;color:var(--ink-2);font-size:13.5px;font-weight:650;}
-
-    .impact{
-      border-radius:var(--radius-sm);
-      border:1px solid rgba(18,53,36,0.12);
-      background:rgba(18,53,36,0.05);
-      padding:10px 12px;
-      display:grid;
-      gap:6px;
+    .desc {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
     }
 
-    .row{display:flex;gap:10px;align-items:flex-start;color:var(--ink-2);font-size:12.8px;font-weight:760;}
-    .dot{width:8px;height:8px;border-radius:999px;background:rgba(63,169,245,1);margin-top:5px;box-shadow:0 6px 12px rgba(63,169,245,0.2);}
-
-    .card-actions{padding:0 16px 16px;display:flex;gap:10px;align-items:center;margin-top:auto;}
-
-    .mini{padding:10px 12px;border-radius:10px;font-size:13px;}
-
-    .link{
-      font-size:13px;
-      font-weight:900;
-      color:rgba(18,53,36,0.9);
-      border-bottom:1px solid rgba(18,53,36,0.18);
-      padding-bottom:2px;
-    }
-    .link:hover{border-bottom-color:rgba(63,169,245,0.72);}
-    .link:focus-visible{outline:3px solid rgba(63,169,245,0.58);outline-offset:2px;}
-
-    .viewed{
-      position:absolute;
-      top:12px;
-      right:12px;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      border-radius:999px;
-      padding:7px 10px;
-      background:rgba(18,53,36,0.92);
-      color:rgba(239,230,216,0.92);
-      border:1px solid rgba(239,230,216,0.14);
-      box-shadow:var(--shadow-3);
-      font-size:11.8px;
-      font-weight:900;
-      opacity:0;
-      transform:translateY(-7px);
-      pointer-events:none;
-      transition:opacity 180ms ease, transform 180ms ease;
-    }
-    .viewed.show{opacity:1;transform:translateY(0);}
-
-    .check{width:16px;height:16px;border-radius:999px;background:rgba(63,169,245,1);display:grid;place-items:center;}
-    .check svg{width:11px;height:11px;}
-
-    .twocol{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-
-    .panel{
-      border-radius:var(--radius-md);
-      border:1px solid var(--border);
-      background:rgba(239,230,216,0.74);
-      box-shadow:var(--shadow-2);
-      padding:16px 16px 14px;
+    .actions {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
-    .panel h3{margin:0 0 8px;font-size:14px;font-weight:940;}
-    .panel p{margin:0;color:var(--ink-2);font-size:13.5px;font-weight:650;}
-
-    .list{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:10px;}
-    .list li{display:flex;gap:10px;align-items:flex-start;color:var(--ink-2);font-size:13.2px;font-weight:740;}
-    .bullet{width:10px;height:10px;border-radius:999px;background:rgba(63,169,245,1);margin-top:5px;box-shadow:0 6px 12px rgba(63,169,245,0.18);}
-
-    .footer{
-      margin-top:26px;
-      padding-top:18px;
-      border-top:1px solid rgba(18,53,36,0.14);
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-      color:var(--ink-2);
-      font-size:13px;
-      font-weight:760;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 120ms ease;
     }
 
-    .fine{color:var(--ink-3);font-size:13px;font-weight:740;max-width:72ch;}
+    .btn:hover { transform: translateY(-1px); }
 
-    @media (max-width:980px){
-      .hero-grid{grid-template-columns:1fr;}
-      .cta-row{justify-content:flex-start;}
-      .card{grid-column:span 6;}
-      .twocol{grid-template-columns:1fr;}
+    .btn-primary {
+      background: var(--sky);
+      color: #103120;
+      border-color: rgba(18, 53, 36, 0.12);
     }
 
-    @media (max-width:640px){
-      .wrap{padding:22px 16px 52px;}
-      .hero{padding:26px 18px 18px;}
-      .card{grid-column:span 12;}
+    .btn-secondary {
+      background: rgba(18, 53, 36, 0.08);
+      color: var(--ink);
+      border-color: var(--line);
     }
 
-    @media (prefers-reduced-motion: reduce){
-      *{transition:none !important;scroll-behavior:auto !important;}
+    .section {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.4);
+      padding: 16px;
+      margin-top: 18px;
+    }
+
+    .section h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .section ol {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink-soft);
+    }
+
+    .empty {
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      color: var(--ink-soft);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    code {
+      background: rgba(18, 53, 36, 0.08);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 0.85em;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
-        <div>
-          <h1>Instructional Design Portfolio</h1>
-          <p>Jacob Patterson | Performance-Focused Learning Design</p>
-        </div>
-      </div>
-
-      <nav class="navlinks" aria-label="Primary navigation">
-        <a class="pill" href="#work">Work</a>
-        <a class="pill" href="#approach">Approach</a>
-        <a class="pill" href="#capabilities">Capabilities</a>
-        <a class="pill" href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <div>
-          <h2 id="hero-title">I Design Learning That Changes On-the-Job Performance</h2>
-          <p>
-            I build SCORM and web learning experiences that reduce time-to-competency, improve decision quality,
-            and support measurable business outcomes. The portfolio below shows end-to-end thinking: strategy,
-            interaction design, and execution.
-          </p>
-          <div class="meta-row" aria-label="Highlights">
-            <span class="tag">Performance-first objectives</span>
-            <span class="tag">Scenario-driven practice</span>
-            <span class="tag">Measurable outcomes</span>
-          </div>
-        </div>
-
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#work">
-            <span aria-hidden="true" class="icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M8 5l10 7-10 7V5z" fill="rgba(18,53,36,0.92)"></path>
-              </svg>
-            </span>
-            View featured work
-          </a>
-          <a class="btn btn-ghost" href="#approach">
-            <span aria-hidden="true" class="icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9z" stroke="rgba(239,230,216,0.9)" stroke-width="2"></path>
-                <path d="M12 8v5" stroke="rgba(239,230,216,0.9)" stroke-width="2" stroke-linecap="round"></path>
-                <path d="M12 16h.01" stroke="rgba(239,230,216,0.9)" stroke-width="3" stroke-linecap="round"></path>
-              </svg>
-            </span>
-            Review my approach
-          </a>
-        </div>
-      </div>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Course Launch Pad</h1>
+      <p>
+        Lightweight landing page for publishing Evolve/SCORM web packages on GitHub Pages.
+        Keep each package in its own folder, add one entry in <code>courses.json</code>, and it appears below.
+      </p>
     </section>
 
-    <section class="section" id="work" aria-labelledby="work-title">
-      <div class="section-header">
-        <div>
-          <h3 class="section-title" id="work-title">Featured Work</h3>
-          <p class="section-sub">
-            One production-ready course plus shell concepts for common business needs. Filter by format and focus area.
-            Clicking a card (or launch link) marks it as viewed and stores state in your browser.
-          </p>
-        </div>
-
-        <div class="filters" aria-label="Portfolio filters">
-          <select class="select" id="filterType" aria-label="Filter by format">
-            <option value="all">All formats</option>
-            <option value="scorm">SCORM</option>
-            <option value="web">Web</option>
-          </select>
-
-          <select class="select" id="filterFocus" aria-label="Filter by focus">
-            <option value="all">All focus areas</option>
-            <option value="compliance">Compliance scenario</option>
-            <option value="onboarding">Onboarding</option>
-            <option value="product">Product training</option>
-            <option value="leadership">Leadership enablement</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="grid" id="cards" aria-label="Portfolio cards"></div>
+    <section>
+      <div id="courses" class="grid" aria-live="polite"></div>
     </section>
 
-    <section class="section" id="approach" aria-labelledby="approach-title">
-      <div class="section-header">
-        <div>
-          <h3 class="section-title" id="approach-title">Approach</h3>
-          <p class="section-sub">
-            I align stakeholders around performance goals, design decision-rich practice, and validate results with
-            clear business-facing metrics.
-          </p>
-        </div>
-      </div>
-
-      <div class="twocol">
-        <div class="panel">
-          <h3>Design principles</h3>
-          <ul class="list">
-            <li><span class="bullet" aria-hidden="true"></span>Design for the behavior change required on the job, not just knowledge recall.</li>
-            <li><span class="bullet" aria-hidden="true"></span>Use scenario pressure and immediate feedback to build judgment under real constraints.</li>
-            <li><span class="bullet" aria-hidden="true"></span>Keep UX friction low so learners spend effort on decisions, not navigation.</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>Typical deliverables</h3>
-          <ul class="list">
-            <li><span class="bullet" aria-hidden="true"></span>Performance analysis, learner profile, and success metrics framework.</li>
-            <li><span class="bullet" aria-hidden="true"></span>Storyboard, decision map, script, and interactive prototype.</li>
-            <li><span class="bullet" aria-hidden="true"></span>SCORM/web production build with accessibility and QA pass.</li>
-            <li><span class="bullet" aria-hidden="true"></span>Evaluation plan: completion, assessment quality, time-to-competency, and field KPI movement.</li>
-          </ul>
-        </div>
-      </div>
+    <section class="section" aria-labelledby="upload-title">
+      <h3 id="upload-title">How to add a new package</h3>
+      <ol>
+        <li>Create a folder like <code>courses/my-course/</code> and upload your package files there (for Evolve exports this usually includes <code>index.html</code>, <code>assets/</code>, and manifest files).</li>
+        <li>Add a new object in <code>courses.json</code> with <code>launchUrl</code> (direct package) and/or <code>courseFile</code> (shared viewer mode).</li>
+        <li>Commit and push. GitHub Pages will publish the new course link automatically.</li>
+      </ol>
     </section>
-
-    <section class="section" id="capabilities" aria-labelledby="capabilities-title">
-      <div class="section-header">
-        <div>
-          <h3 class="section-title" id="capabilities-title">Capabilities</h3>
-          <p class="section-sub">
-            I bridge learning strategy and production craft: from stakeholder alignment to polished, measurable delivery.
-          </p>
-        </div>
-      </div>
-
-      <div class="twocol">
-        <div class="panel">
-          <h3>Tools and execution</h3>
-          <ul class="list">
-            <li><span class="bullet" aria-hidden="true"></span>Articulate Storyline and Rise 360 for SCORM authoring and branching interactions.</li>
-            <li><span class="bullet" aria-hidden="true"></span>HTML/CSS/JS for web-based modules, prototypes, and interaction shells.</li>
-            <li><span class="bullet" aria-hidden="true"></span>Figma for UX flows, component systems, and stakeholder-ready design walkthroughs.</li>
-          </ul>
-        </div>
-
-        <div class="panel">
-          <h3>Strategy and measurement</h3>
-          <ul class="list">
-            <li><span class="bullet" aria-hidden="true"></span>Performance objectives, assessment design, and practice calibration.</li>
-            <li><span class="bullet" aria-hidden="true"></span>Analytics planning for completion, confidence lift, accuracy, and speed-to-proficiency.</li>
-            <li><span class="bullet" aria-hidden="true"></span>Executive-ready impact narratives that connect learning outputs to business outcomes.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact" aria-labelledby="contact-title">
-      <div class="section-header">
-        <div>
-          <h3 class="section-title" id="contact-title">Contact</h3>
-          <p class="section-sub">
-            If you are hiring, I can walk through one project end-to-end: business problem, decision points,
-            design tradeoffs, and measurable impact.
-          </p>
-        </div>
-      </div>
-
-      <div class="twocol">
-        <div class="panel">
-          <h3>Quick links</h3>
-          <ul class="list">
-            <li><span class="bullet" aria-hidden="true"></span><a class="link" href="#" aria-label="Email link placeholder">Email (add your address)</a></li>
-            <li><span class="bullet" aria-hidden="true"></span><a class="link" href="#" aria-label="LinkedIn link placeholder">LinkedIn (add your profile)</a></li>
-            <li><span class="bullet" aria-hidden="true"></span><a class="link" href="#" aria-label="Resume link placeholder">Resume (add PDF link)</a></li>
-          </ul>
-          <p class="fine" style="margin-top:12px;">Built as a single-file landing page and ready to publish to GitHub Pages.</p>
-        </div>
-
-        <div class="panel">
-          <h3>One-line value proposition</h3>
-          <p>
-            I design and build learning experiences that shorten ramp time, improve in-role decision quality,
-            and produce measurable performance gains.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div>
-        <strong style="color:rgba(18,53,36,0.92);">Jacob Patterson</strong><br />
-        <span class="fine">Instructional Design | SCORM | Web Learning</span>
-      </div>
-      <div class="fine">Tip: open a card to show the Viewed badge. Viewed state persists with localStorage.</div>
-    </footer>
-  </div>
+  </main>
 
   <script>
-    const courses = [
-      {
-        id: 'featured-product-academy-001',
-        title: 'Product Knowledge Academy | Featured Course',
-        type: 'scorm',
-        focus: 'product',
-        duration: '18 min',
-        format: 'SCORM + web companion',
-        description: 'A production-ready product training course designed to improve sales and support conversations through scenario-based decision checkpoints.',
-        impact: [
-          'Improved first-call accuracy by 19% in pilot cohort',
-          'Reduced time-to-proficiency from 21 days to 14 days',
-          'Embedded coaching prompts for manager follow-through'
-        ],
-        launchUrl: 'course-viewer.html?course=course.json',
-        launchUrl: '#',
-        featured: true
-      },
-      {
-        id: 'shell-compliance-002',
-        title: 'Ethics Compliance Decision Lab (Shell)',
-        type: 'scorm',
-        focus: 'compliance',
-        duration: '16 min',
-        format: 'SCORM branching scenario',
-        description: 'A compliance simulation for high-risk decision points, emphasizing practical judgment and defensible documentation.',
-        impact: [
-          'Branch logic teaches consequence mapping',
-          'Feedback loop targets policy application gaps',
-          'Designed for audit-ready completion reporting'
-        ],
-        launchUrl: 'course-viewer.html?course=course.json',
-        launchUrl: '#',
-      },
-      {
-        id: 'shell-onboarding-003',
-        title: 'First-30-Days Manager Onboarding (Shell)',
-        type: 'web',
-        focus: 'onboarding',
-        duration: '12 min',
-        format: 'Web microlearning',
-        description: 'An onboarding experience for new people managers focused on role clarity, priority setting, and early performance conversations.',
-        impact: [
-          'Role-priority framework with action planning',
-          'Decision prompts for common first-month scenarios',
-          'Downloadable starter toolkit placeholder'
-        ],
-        launchUrl: 'course-viewer.html?course=course.json',
-        launchUrl: '#',
-      },
-      {
-        id: 'shell-product-004',
-        title: 'Feature Launch Readiness Sprint (Shell)',
-        type: 'web',
-        focus: 'product',
-        duration: '9 min',
-        format: 'Web guided simulation',
-        description: 'A concise enablement module for customer-facing teams to practice messaging and objection handling before product release.',
-        impact: [
-          'Scenario rehearsal for launch-week calls',
-          'Message consistency checks across personas',
-          'Fast-reference playbook integration placeholder'
-        ],
-        launchUrl: 'course-viewer.html?course=course.json',
-        launchUrl: '#',
-      },
-      {
-        id: 'shell-leadership-005',
-        title: 'Leadership Feedback Coaching Studio (Shell)',
-        type: 'web',
-        focus: 'leadership',
-        duration: '14 min',
-        format: 'Web interactive workshop',
-        description: 'A leadership enablement module to strengthen coaching conversations with structured practice and reflective debriefs.',
-        impact: [
-          'Conversation model with reusable prompts',
-          'Practice rounds with branching responses',
-          'Performance support checklist placeholder'
-        ],
-        launchUrl: 'course-viewer.html?course=course.json',
-        launchUrl: '#',
+    const coursesRoot = document.getElementById('courses');
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function launchHref(course) {
+      if (course.launchUrl) return course.launchUrl;
+      if (course.courseFile) {
+        const safe = String(course.courseFile).replace(/[^a-zA-Z0-9._\/-]/g, '');
+        return `course-viewer.html?course=${encodeURIComponent(safe)}`;
       }
-    ];
+      return null;
+    }
 
-    const VIEW_KEY = 'id_portfolio_viewed_map_v1';
-
-    function getViewedMap() {
-      try {
-        return JSON.parse(localStorage.getItem(VIEW_KEY) || '{}');
-      } catch {
-        return {};
+    function renderCourses(courses) {
+      if (!Array.isArray(courses) || courses.length === 0) {
+        coursesRoot.innerHTML = '<div class="empty">No courses are listed yet. Add entries to <code>courses.json</code> to publish packages.</div>';
+        return;
       }
+
+      coursesRoot.innerHTML = courses.map((course) => {
+        const title = escapeHtml(course.title || 'Untitled course');
+        const description = escapeHtml(course.description || 'No description provided.');
+        const author = escapeHtml(course.author || 'Unknown author');
+        const type = escapeHtml(course.type || 'Web package');
+        const directHref = course.launchUrl ? escapeHtml(course.launchUrl) : null;
+        const viewerHref = course.courseFile
+          ? `course-viewer.html?course=${encodeURIComponent(String(course.courseFile).replace(/[^a-zA-Z0-9._\/-]/g, ''))}`
+          : null;
+        const primaryHref = launchHref(course);
+
+        const actions = [];
+        if (primaryHref) {
+          actions.push(`<a class="btn btn-primary" href="${escapeHtml(primaryHref)}" target="_blank" rel="noopener">Launch</a>`);
+        }
+        if (directHref && viewerHref) {
+          actions.push(`<a class="btn btn-secondary" href="${viewerHref}" target="_blank" rel="noopener">Open in viewer</a>`);
+        }
+
+        return `
+          <article class="card">
+            <h2>${title}</h2>
+            <div class="meta">
+              <span class="chip">${type}</span>
+              <span class="chip">${author}</span>
+            </div>
+            <p class="desc">${description}</p>
+            <div class="actions">${actions.join('')}</div>
+          </article>
+        `;
+      }).join('');
     }
 
-    function setViewed(id) {
-      const map = getViewedMap();
-      map[id] = { viewed: true, ts: Date.now() };
-      localStorage.setItem(VIEW_KEY, JSON.stringify(map));
-    }
-
-    function isViewed(id) {
-      const map = getViewedMap();
-      return !!(map[id] && map[id].viewed);
-    }
-
-    const cardsEl = document.getElementById('cards');
-    const filterTypeEl = document.getElementById('filterType');
-    const filterFocusEl = document.getElementById('filterFocus');
-
-    function svgCheck() {
-      return `
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M20 6L9 17l-5-5" stroke="rgba(18,53,36,0.92)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-      `;
-    }
-
-    function svgLaunch() {
-      return `
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M14 3h7v7" stroke="rgba(18,53,36,0.92)" stroke-width="2" stroke-linecap="round"></path>
-          <path d="M21 3l-9 9" stroke="rgba(18,53,36,0.92)" stroke-width="2" stroke-linecap="round"></path>
-          <path d="M10 7H6a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4" stroke="rgba(18,53,36,0.92)" stroke-width="2" stroke-linecap="round"></path>
-        </svg>
-      `;
-    }
-
-    function render() {
-      const type = filterTypeEl.value;
-      const focus = filterFocusEl.value;
-
-      const items = courses.filter((course) => {
-        const typeOk = type === 'all' || course.type === type;
-        const focusOk = focus === 'all' || course.focus === focus;
-        return typeOk && focusOk;
+    fetch('courses.json')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Unable to load courses.json (${response.status})`);
+        }
+        return response.json();
+      })
+      .then((data) => renderCourses(data.courses))
+      .catch((error) => {
+        coursesRoot.innerHTML = `<div class="empty">Could not load course list. ${escapeHtml(error.message)}</div>`;
       });
-
-      items.sort((a, b) => (b.featured === true) - (a.featured === true));
-
-      cardsEl.innerHTML = items
-        .map((course) => {
-          const viewed = isViewed(course.id);
-          const viewedClass = viewed ? 'show' : '';
-          const featuredChip = course.featured ? '<span class="chip">Featured</span>' : '';
-          return `
-            <article class="card" data-id="${course.id}" tabindex="-1" aria-label="${course.title}">
-              <div class="viewed ${viewedClass}" aria-hidden="${viewed ? 'false' : 'true'}">
-                <span class="check">${svgCheck()}</span>
-                Viewed
-              </div>
-
-              <div class="card-top">
-                <div>
-                  <h4 class="card-title">${course.title}</h4>
-                  <div class="card-meta">
-                    ${featuredChip}
-                    <span class="chip">${course.format}</span>
-                    <span class="chip">${course.duration}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-body">
-                <p class="card-desc">${course.description}</p>
-                <div class="impact" aria-label="Impact highlights">
-                  ${course.impact.map((line) => `<div class="row"><span class="dot" aria-hidden="true"></span><span>${line}</span></div>`).join('')}
-                </div>
-              </div>
-
-              <div class="card-actions">
-                <a class="btn btn-primary mini" href="${course.launchUrl}" data-action="launch" data-id="${course.id}" target="_blank" rel="noopener">
-                  <span class="icon">${svgLaunch()}</span>
-                  Launch learning example
-                  Launch experience
-                </a>
-              </div>
-            </article>
-          `;
-        })
-        .join('');
-
-      cardsEl.querySelectorAll('.card').forEach((card) => {
-        card.addEventListener('click', () => {
-          const id = card.getAttribute('data-id');
-          setViewed(id);
-          const badge = card.querySelector('.viewed');
-          badge.classList.add('show');
-        });
-      });
-
-      cardsEl.querySelectorAll('[data-action]').forEach((link) => {
-        link.addEventListener('click', () => {
-          const id = link.getAttribute('data-id');
-          setViewed(id);
-          const card = cardsEl.querySelector(`.card[data-id="${id}"]`);
-          if (card) {
-            const badge = card.querySelector('.viewed');
-            badge.classList.add('show');
-          }
-        });
-      });
-    }
-
-    filterTypeEl.addEventListener('change', render);
-    filterFocusEl.addEventListener('change', render);
-
-    render();
   </script>
 </body>
 </html>
