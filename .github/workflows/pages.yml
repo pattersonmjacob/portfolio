@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -12,13 +21,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # nothing to build; the repository is already a static site
-
-      - name: Deploy to GitHub Pages
+      # Nothing to build; the repository is already a static site.
+      - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
           publish_branch: gh-pages
-          # keep history on the gh-pages branch
-          keep_files: true
+          # Create a fresh branch state each deploy so first-run works cleanly.
+          force_orphan: true

@@ -1,0 +1,20 @@
+{
+  "courses": [
+    {
+      "id": "compliance-scenario-simulation",
+      "featured": true,
+      "title": "Compliance Scenario Simulation",
+      "tagline": "SCORM 1.2 | Articulate Storyline | 20 min",
+      "description": "Interactive compliance training built around real-world decision points. Learners navigate branching scenarios, receive contextual feedback, and apply policy knowledge in realistic situations. Designed to increase retention and reduce repeat violations.",
+      "impact": [
+        "34% improvement in post-assessment scores",
+        "Reduced time-to-completion by 18%",
+        "Positive learner feedback on realism and clarity"
+      ],
+      "author": "Jacob Patterson",
+      "type": "SCORM 1.2",
+      "courseFile": "course.json",
+      "caseStudyUrl": "index.html#approach"
+    }
+  ]
+}
