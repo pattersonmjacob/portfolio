@@ -6,423 +6,172 @@
     <title>Course Portfolio</title>
     <style>
       :root {
-        --forest: #123524;
-        --sand: #efe6d8;
-        --sky: #3fa9f5;
-        --space-1: 8px;
-        --space-2: 16px;
-        --space-3: 24px;
-        --space-4: 32px;
-        --space-5: 40px;
-        --space-6: 48px;
-        --radius-lg: 24px;
-        --radius-md: 16px;
+        --deep-forest: #123524;
+        --light-sand: #efe6d8;
+        --sky-blue: #3fa9f5;
+        --card-cream: #f8f3ea;
         font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       }
 
-      * { box-sizing: border-box; }
-
-      html, body { margin: 0; }
+      * {
+        box-sizing: border-box;
+      }
 
       body {
-        color: rgba(18, 53, 36, 0.96);
+        margin: 0;
+        min-height: 100vh;
+        color: var(--deep-forest);
         background:
-          radial-gradient(circle at center, rgba(239, 230, 216, 1) 0%, rgba(18, 53, 36, 0.08) 100%),
-          rgba(239, 230, 216, 1);
+          radial-gradient(circle at 12% 18%, rgba(63, 169, 245, 0.2) 0 18%, transparent 45%),
+          radial-gradient(circle at 90% 8%, rgba(18, 53, 36, 0.1) 0 16%, transparent 50%),
+          var(--light-sand);
       }
 
       .wrapper {
-        width: min(80vw, 1320px);
+        width: min(80vw, 1280px);
         margin: 0 auto;
-        padding: var(--space-5) 0 calc(var(--space-6) * 1.5);
+        padding: clamp(2rem, 4vw, 3.5rem) 0 4rem;
       }
 
       .hero {
-        background:
-          linear-gradient(140deg, rgba(18, 53, 36, 1), rgba(18, 53, 36, 0.9)),
-          rgba(18, 53, 36, 1);
-        color: rgba(239, 230, 216, 0.98);
-        border-radius: 22px;
-        box-shadow: 0 12px 32px rgba(18, 53, 36, 0.18);
-        padding: clamp(var(--space-4), 5vw, calc(var(--space-6) + var(--space-1)));
+        background: linear-gradient(140deg, rgba(18, 53, 36, 0.97), rgba(24, 76, 53, 0.95));
+        color: var(--light-sand);
+        border-radius: 20px;
+        padding: clamp(1.25rem, 2.5vw, 2.5rem);
+        box-shadow: 0 20px 40px rgba(18, 53, 36, 0.26);
       }
 
-      .hero h1 {
+      h1 {
         margin: 0;
-        font-size: clamp(2rem, 4.6vw, 3.2rem);
-        line-height: 1.2;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: 0.01em;
       }
 
-      .hero .subheadline {
-        margin: var(--space-2) 0 0;
-        max-width: 72ch;
-        line-height: 1.6;
-        color: rgba(239, 230, 216, 0.92);
-      }
-
-      .hero .supporting {
-        margin: var(--space-2) 0 0;
-        color: rgba(239, 230, 216, 0.8);
-      }
-
-      .hero-actions {
-        margin-top: var(--space-4);
-        display: flex;
-        gap: var(--space-3);
-        flex-wrap: wrap;
-        align-items: center;
-      }
-
-      .cta-primary {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid transparent;
-        border-radius: 12px;
-        background: rgba(63, 169, 245, 1);
-        color: rgba(18, 53, 36, 1);
-        text-decoration: none;
-        font-weight: 700;
-        padding: 12px 20px;
-        transition: filter 0.15s ease, transform 0.15s ease;
-      }
-
-      .cta-primary:hover { filter: brightness(0.92); transform: translateY(-1px); }
-
-      .cta-secondary {
-        color: rgba(239, 230, 216, 0.9);
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        transition: color 0.15s ease;
-      }
-
-      .cta-secondary:hover { color: rgba(239, 230, 216, 1); }
-
-      .portfolio {
-        margin-top: calc(var(--space-6) + var(--space-2));
-      }
-
-      .portfolio-header {
-        margin-bottom: var(--space-3);
-      }
-
-      .portfolio-header h2 {
-        margin: 0;
-        font-size: clamp(1.4rem, 2.5vw, 2rem);
-      }
-
-      .portfolio-header p {
-        margin: var(--space-1) 0 0;
-        color: rgba(18, 53, 36, 0.82);
+      .lead {
+        margin: 0.85rem 0 0;
+        max-width: 68ch;
+        line-height: 1.55;
+        color: rgba(239, 230, 216, 0.94);
       }
 
       .grid {
+        margin-top: 1.8rem;
         display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        gap: var(--space-3);
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      @media (min-width: 740px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 1120px) {
+        .grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
       }
 
       .card {
-        grid-column: span 12;
-        max-width: 420px;
-        width: 100%;
-        justify-self: center;
         position: relative;
-        background: rgba(239, 230, 216, 0.88);
-        border: 1px solid rgba(18, 53, 36, 0.16);
-        border-radius: var(--radius-md);
-        box-shadow:
-          0 6px 18px rgba(18, 53, 36, 0.08),
-          0 2px 6px rgba(18, 53, 36, 0.05);
-        padding: var(--space-3);
+        background: var(--card-cream);
+        border: 1px solid rgba(18, 53, 36, 0.2);
+        border-radius: 16px;
+        padding: 1rem 1rem 1.15rem;
+        box-shadow: 0 10px 24px rgba(18, 53, 36, 0.14);
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        transition: transform 0.18s ease, box-shadow 0.18s ease;
+        gap: 0.56rem;
+        isolation: isolate;
       }
 
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow:
-          0 10px 20px rgba(18, 53, 36, 0.1),
-          0 2px 8px rgba(18, 53, 36, 0.06);
+      .card::before {
+        content: '';
+        position: absolute;
+        inset: 10px -10px -10px 10px;
+        border-radius: 16px;
+        background: rgba(63, 169, 245, 0.18);
+        z-index: -1;
       }
 
-      @media (min-width: 740px) { .card { grid-column: span 6; } }
-      @media (min-width: 1120px) { .card { grid-column: span 4; } }
-
-      .card h3 {
+      .card h2 {
         margin: 0;
-        font-size: 1.2rem;
+        font-size: 1.15rem;
+        color: var(--deep-forest);
       }
 
-      .tagline {
+      .meta {
         margin: 0;
         font-size: 0.88rem;
-        color: rgba(18, 53, 36, 0.75);
+        color: rgba(18, 53, 36, 0.72);
       }
 
-      .description {
-        margin: 0;
-        line-height: 1.58;
-        color: rgba(18, 53, 36, 0.88);
-      }
-
-      .impact {
-        margin: 0;
-        padding-left: 18px;
-        color: rgba(18, 53, 36, 0.86);
+      .desc {
+        margin: 0.2rem 0 0.75rem;
         line-height: 1.45;
+        color: rgba(18, 53, 36, 0.85);
       }
 
       .actions {
         margin-top: auto;
         display: flex;
-        gap: var(--space-2);
         flex-wrap: wrap;
-        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn {
+        border: 1px solid transparent;
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 0.55rem 0.88rem;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
       }
 
       .btn-primary {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 10px;
-        border: 1px solid transparent;
-        background: rgba(63, 169, 245, 1);
-        color: rgba(18, 53, 36, 1);
-        text-decoration: none;
-        font-weight: 700;
-        padding: 10px 14px;
-        transition: filter 0.15s ease, transform 0.15s ease;
+        background: var(--sky-blue);
+        color: #082a44;
+        box-shadow: 0 5px 12px rgba(63, 169, 245, 0.35);
       }
 
-      .btn-primary:hover { filter: brightness(0.92); transform: translateY(-1px); }
-
-      .text-link {
-        color: rgba(18, 53, 36, 0.84);
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        transition: color 0.15s ease;
-      }
-
-      .text-link:hover { color: rgba(18, 53, 36, 1); }
-
-      .viewed-badge {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        width: 30px;
-        height: 30px;
-        border-radius: 999px;
-        border: 1px solid rgba(63, 169, 245, 0.5);
-        background: rgba(18, 53, 36, 1);
-        color: rgba(239, 230, 216, 1);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.95rem;
-        opacity: 0;
-        transform: scale(0.9);
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-
-      .viewed-badge.visible {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      .last-viewed {
-        margin: 0;
-        font-size: 0.8rem;
-        color: rgba(18, 53, 36, 0.7);
+      .btn-secondary {
+        background: rgba(18, 53, 36, 0.08);
+        border-color: rgba(18, 53, 36, 0.22);
+        color: var(--deep-forest);
       }
 
       .empty {
-        margin-top: var(--space-3);
+        margin-top: 1.5rem;
+        padding: 1rem;
         border-radius: 12px;
-        border: 1px dashed rgba(18, 53, 36, 0.35);
-        background: rgba(239, 230, 216, 0.8);
-        padding: var(--space-2);
-      }
-
-      .split {
-        margin-top: calc(var(--space-6) + var(--space-2));
-        display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-        gap: var(--space-3);
-      }
-
-      .panel {
-        grid-column: span 12;
-        border-radius: var(--radius-md);
-        border: 1px solid rgba(18, 53, 36, 0.15);
-        background: rgba(239, 230, 216, 0.8);
-        padding: var(--space-3);
-      }
-
-      @media (min-width: 980px) {
-        .panel.approach { grid-column: span 6; }
-        .panel.tools { grid-column: span 6; }
-      }
-
-      .panel h2, .panel h3 {
-        margin: 0;
-        color: rgba(18, 53, 36, 1);
-      }
-
-      .panel p {
-        margin: var(--space-2) 0 0;
-        line-height: 1.58;
-      }
-
-      .process-list {
-        margin: var(--space-2) 0 0;
-        padding-left: 20px;
-      }
-
-      .tool-grid {
-        margin-top: var(--space-2);
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--space-2);
-      }
-
-      @media (min-width: 760px) { .tool-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-
-      .tool-item h4 {
-        margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .icon-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 999px;
-        background: rgba(63, 169, 245, 1);
-        display: inline-block;
-      }
-
-      .tool-item p {
-        margin: 8px 0 0;
-        font-size: 0.95rem;
-        color: rgba(18, 53, 36, 0.86);
+        border: 1px dashed rgba(18, 53, 36, 0.4);
+        background: rgba(248, 243, 234, 0.95);
       }
     </style>
   </head>
   <body>
     <main class="wrapper">
-      <section class="hero">
-        <h1>Learning Experiences Built for Performance</h1>
-        <p class="subheadline">Instructional design portfolio showcasing SCORM, web-based learning, and scenario-driven experiences focused on measurable outcomes, learner engagement, and business impact.</p>
-        <p class="supporting">Designed and developed by Jacob Patterson. Built with performance, accessibility, and scalability in mind.</p>
-        <div class="hero-actions">
-          <a id="featured-course-link" class="cta-primary" href="#portfolio-cards">View Featured Course</a>
-          <a class="cta-secondary" href="#approach">About My Approach</a>
-        </div>
+      <section class="hero" aria-label="Portfolio header">
+        <h1>Course Portfolio</h1>
+        <p class="lead">Explore and launch authored SCORM/web learning experiences. Add or edit course entries in <code>courses.json</code>.</p>
       </section>
 
-      <section id="portfolio-cards" class="portfolio" aria-label="Portfolio cards">
-        <header class="portfolio-header">
-          <h2>Featured Learning Experiences</h2>
-          <p>Scenario-driven training work built with instructional strategy and measurable performance outcomes.</p>
-        </header>
-
-        <section id="course-grid" class="grid" aria-live="polite"></section>
-        <div id="empty-state" class="empty" hidden>
-          No courses found in <code>courses.json</code>. Add at least one course entry to begin.
-        </div>
-      </section>
-
-      <section class="split">
-        <article id="approach" class="panel approach">
-          <h2>How I Approach Learning Design</h2>
-          <p>I design learning experiences that balance clarity, cognitive load, and business relevance. Every project starts with defined performance outcomes, measurable success criteria, and a structured storyboard aligned to stakeholder needs.</p>
-          <ul class="process-list">
-            <li>Front-end analysis and learner persona mapping</li>
-            <li>Clear performance objectives</li>
-            <li>Iterative prototyping</li>
-            <li>Accessibility compliance</li>
-            <li>Post-launch evaluation and optimization</li>
-          </ul>
-        </article>
-
-        <article class="panel tools">
-          <h3>Tools &amp; Capabilities</h3>
-          <div class="tool-grid">
-            <div class="tool-item">
-              <h4><span class="icon-dot" aria-hidden="true"></span>Design &amp; Authoring</h4>
-              <p>Articulate Storyline, Rise 360, Figma, Adobe XD</p>
-            </div>
-            <div class="tool-item">
-              <h4><span class="icon-dot" aria-hidden="true"></span>Learning Standards</h4>
-              <p>SCORM 1.2, xAPI, LMS integration, Accessibility (WCAG)</p>
-            </div>
-            <div class="tool-item">
-              <h4><span class="icon-dot" aria-hidden="true"></span>Strategy &amp; Measurement</h4>
-              <p>Needs analysis, learning analytics, stakeholder alignment, performance gap mapping</p>
-            </div>
-          </div>
-        </article>
-      </section>
+      <section id="course-grid" class="grid" aria-live="polite"></section>
+      <div id="empty-state" class="empty" hidden>
+        No courses found in <code>courses.json</code>. Add at least one course entry to begin.
+      </div>
     </main>
 
     <script>
-      const viewedStorageKey = 'portfolioViewedCourses';
-
-      function slugFromCourse(course, index) {
-        return String(course.id || course.courseFile || course.launchUrl || course.title || `course-${index}`)
-          .trim()
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-');
-      }
-
-      function getViewedMap() {
-        try {
-          return JSON.parse(localStorage.getItem(viewedStorageKey) || '{}');
-        } catch {
-          return {};
-        }
-      }
-
-      function setViewed(slug) {
-        const viewed = getViewedMap();
-        viewed[slug] = new Date().toISOString();
-        localStorage.setItem(viewedStorageKey, JSON.stringify(viewed));
-      }
-
-      function formatDate(isoString) {
-        try {
-          const date = new Date(isoString);
-          return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-        } catch {
-          return '';
-        }
-      }
-
-      function buildImpactList(course) {
-        const impactItems = Array.isArray(course.impact) ? course.impact : [];
-        if (!impactItems.length) {
-          return null;
-        }
-
-        const list = document.createElement('ul');
-        list.className = 'impact';
-        for (const item of impactItems) {
-          const li = document.createElement('li');
-          li.textContent = item;
-          list.appendChild(li);
-        }
-        return list;
-      }
-
       async function loadCourses() {
         const grid = document.getElementById('course-grid');
         const emptyState = document.getElementById('empty-state');
-        const featuredLink = document.getElementById('featured-course-link');
-        const viewedMap = getViewedMap();
 
         try {
           const response = await fetch('courses.json');
@@ -438,111 +187,47 @@
             return;
           }
 
-          const featuredCourse = courses.find((course) => course.featured) || courses[0];
-          if (featuredCourse?.courseFile) {
-            featuredLink.href = `course-viewer.html?course=${encodeURIComponent(featuredCourse.courseFile)}`;
-            featuredLink.target = '_blank';
-            featuredLink.rel = 'noopener noreferrer';
-          } else if (featuredCourse?.launchUrl) {
-            featuredLink.href = featuredCourse.launchUrl;
-            featuredLink.target = '_blank';
-            featuredLink.rel = 'noopener noreferrer';
-          }
-
-          courses.forEach((course, index) => {
-            const slug = slugFromCourse(course, index);
-            const viewedAt = viewedMap[slug];
-
+          for (const course of courses) {
             const card = document.createElement('article');
             card.className = 'card';
-            card.dataset.slug = slug;
 
-            const badge = document.createElement('span');
-            badge.className = `viewed-badge${viewedAt ? ' visible' : ''}`;
-            badge.textContent = '✓';
-            badge.title = 'Viewed';
-            badge.setAttribute('aria-label', 'Viewed');
-
-            const title = document.createElement('h3');
+            const title = document.createElement('h2');
             title.textContent = course.title || 'Untitled Course';
 
-            const tagline = document.createElement('p');
-            tagline.className = 'tagline';
-            tagline.textContent = course.tagline || [course.type || 'Course', course.tools, course.duration].filter(Boolean).join(' | ');
+            const meta = document.createElement('p');
+            meta.className = 'meta';
+            meta.textContent = [course.type || 'Course', course.author].filter(Boolean).join(' • ');
 
             const desc = document.createElement('p');
-            desc.className = 'description';
+            desc.className = 'desc';
             desc.textContent = course.description || 'No description provided.';
-
-            const impact = buildImpactList(course);
 
             const actions = document.createElement('div');
             actions.className = 'actions';
 
             if (course.courseFile) {
               const launch = document.createElement('a');
-              launch.className = 'btn-primary';
+              launch.className = 'btn btn-primary';
               launch.href = `course-viewer.html?course=${encodeURIComponent(course.courseFile)}`;
               launch.target = '_blank';
               launch.rel = 'noopener noreferrer';
-              launch.textContent = course.launchLabel || 'Launch Experience';
-              launch.addEventListener('click', () => {
-                setViewed(slug);
-                badge.classList.add('visible');
-                lastViewed.textContent = `Last viewed: ${formatDate(new Date().toISOString())}`;
-              });
+              launch.textContent = 'Launch in new tab';
               actions.appendChild(launch);
             }
 
-            if (course.caseStudyUrl) {
-              const caseLink = document.createElement('a');
-              caseLink.className = 'text-link';
-              caseLink.href = course.caseStudyUrl;
-              caseLink.target = '_blank';
-              caseLink.rel = 'noopener noreferrer';
-              caseLink.textContent = 'View Case Study';
-              caseLink.addEventListener('click', () => {
-                setViewed(slug);
-                badge.classList.add('visible');
-                lastViewed.textContent = `Last viewed: ${formatDate(new Date().toISOString())}`;
-              });
-              actions.appendChild(caseLink);
-            }
-
             if (course.launchUrl) {
-              const packageLink = document.createElement('a');
-              packageLink.className = 'text-link';
-              packageLink.href = course.launchUrl;
-              packageLink.target = '_blank';
-              packageLink.rel = 'noopener noreferrer';
-              packageLink.textContent = course.caseStudyUrl ? 'Open Package' : 'View Case Study';
-              packageLink.addEventListener('click', () => {
-                setViewed(slug);
-                badge.classList.add('visible');
-                lastViewed.textContent = `Last viewed: ${formatDate(new Date().toISOString())}`;
-              });
-              actions.appendChild(packageLink);
+              const open = document.createElement('a');
+              open.className = 'btn btn-secondary';
+              open.href = course.launchUrl;
+              open.target = '_blank';
+              open.rel = 'noopener noreferrer';
+              open.textContent = 'Open package';
+              actions.appendChild(open);
             }
 
-            const lastViewed = document.createElement('p');
-            lastViewed.className = 'last-viewed';
-            lastViewed.textContent = viewedAt ? `Last viewed: ${formatDate(viewedAt)}` : 'Last viewed: —';
-
-            card.addEventListener('click', () => {
-              setViewed(slug);
-              badge.classList.add('visible');
-              if (!viewedAt) {
-                lastViewed.textContent = `Last viewed: ${formatDate(new Date().toISOString())}`;
-              }
-            });
-
-            card.append(badge, title, tagline, desc);
-            if (impact) {
-              card.appendChild(impact);
-            }
-            card.append(actions, lastViewed);
+            card.append(title, meta, desc, actions);
             grid.appendChild(card);
-          });
+          }
         } catch (error) {
           emptyState.hidden = false;
           emptyState.textContent = `Could not load courses.json (${error.message}).`;
