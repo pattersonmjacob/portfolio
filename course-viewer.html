@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charSet="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Course Viewer</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter%3Awght%40100..900&amp;display=swap" rel="stylesheet" />
+    <link href="assets/variables.css" rel="stylesheet" />
+    <link href="assets/main.css" rel="stylesheet" />
+    <script>
+      (() => {
+        const params = new URLSearchParams(window.location.search);
+        const requestedCourse = params.get('course') || 'course.json';
+        const safeCourse = requestedCourse.replace(/[^a-zA-Z0-9._\/-]/g, '');
+
+        const originalFetch = window.fetch.bind(window);
+        window.fetch = (input, init) => {
+          const url = typeof input === 'string' ? input : input.url;
+          if (url.endsWith('/course.json') || url === 'course.json') {
+            return originalFetch(safeCourse, init);
+          }
+          return originalFetch(input, init);
+        };
+
+        document.title = `Course Viewer - ${safeCourse}`;
+      })();
+    </script>
+  </head>
+  <body class="h-full">
+    <div id="root"></div>
+    <script type="module" src="assets/main.min.js"></script>
+  </body>
+</html>
