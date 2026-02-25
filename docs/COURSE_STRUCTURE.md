@@ -1,38 +1,57 @@
-# Course content maintenance guide
+# Course package workflow
 
-This repo is easiest to maintain when each course has its own folder under `courses/`.
+Use one folder per course under `courses/` so uploads stay clean and replaceable.
 
-## Folder + file conventions
-- Use lowercase kebab-case slugs for folders (example: `sales-onboarding`).
-- Keep each course's source files inside its own folder.
-- Prefer one of these launch styles:
-  - **Shared viewer launch:** `courseFile: "courses/<slug>/course.json"`
-  - **Direct package launch:** `launchUrl: "courses/<slug>/index.html"`
+## Folder naming
 
-## Update workflow
-When you ship a new version of a course:
-1. Replace files only inside that course folder.
-2. Update the matching metadata in `courses.json` (title/description/type if needed).
-3. Do a quick local test.
-4. Commit + push.
+- Use lowercase kebab-case for each course folder.
+- Example: `courses/portfolio-en-2/`
 
-## Suggested catalog fields
-Each course in `courses.json` can include:
+## Typical Evolve export contents
+
+A package folder usually contains:
+
+- `index.html`
+- `course.json`
+- `assets/`
+- `ev-icons/`
+- `manifest.json`
+- `manifest.jws.json`
+
+## Course catalog fields (`courses.json`)
+
+Each course object can include:
+
 - `title`
 - `description`
 - `author`
 - `type`
-- `courseFile` (viewer launch)
-- `launchUrl` (direct launch)
+- `launchUrl` (direct package launch)
+- `courseFile` (shared viewer launch)
 
-## Example entry
+## Minimal examples
+
+Direct launch:
+
 ```json
 {
-  "title": "Compliance 2026",
-  "description": "Annual compliance refresher.",
-  "author": "Your Name",
-  "type": "SCORM 2004",
-  "courseFile": "courses/compliance-2026/course.json",
-  "launchUrl": "courses/compliance-2026/index.html"
+  "title": "Portfolio_en",
+  "launchUrl": "courses/portfolio-en-2/index.html"
 }
 ```
+
+Viewer launch:
+
+```json
+{
+  "title": "Portfolio_en (viewer)",
+  "courseFile": "courses/portfolio-en-2/course.json"
+}
+```
+
+## Publish flow
+
+1. Upload/replace files in one course folder.
+2. Update `courses.json`.
+3. Run a quick local test.
+4. Commit + push.
