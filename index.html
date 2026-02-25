@@ -1,1 +1,169 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="format-detection" content="telephone=no"/><title>Portfolio</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/><link href="https://fonts.googleapis.com/css2?family=Inter%3Awght%40100..900&amp;display=swap" rel="stylesheet"/><link href="assets/variables.css" rel="stylesheet"/><link href="assets/main.css" rel="stylesheet"/></head><body class="h-full"><div id="root"></div><script type="module" src="assets/main.min.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Portfolio</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: #f4f6fb;
+        color: #1d2433;
+      }
+      .wrapper {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 3rem 1rem;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+      }
+      .lead {
+        margin-top: 0.75rem;
+        color: #4a5568;
+      }
+      .grid {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.07);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .card h2 {
+        margin: 0;
+        font-size: 1.15rem;
+      }
+      .meta {
+        margin: 0;
+        color: #64748b;
+        font-size: 0.9rem;
+      }
+      .desc {
+        margin: 0.25rem 0 0.75rem;
+        color: #334155;
+        line-height: 1.4;
+      }
+      .actions {
+        margin-top: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .btn {
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 8px;
+        padding: 0.55rem 0.9rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .btn-primary {
+        background: #1d4ed8;
+        color: #fff;
+      }
+      .btn-secondary {
+        background: #e2e8f0;
+        color: #1e293b;
+      }
+      .empty {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: #fff;
+        border: 1px dashed #cbd5e1;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrapper">
+      <h1>Course Portfolio</h1>
+      <p class="lead">Choose a course to launch. Add or edit courses in <code>courses.json</code>.</p>
+      <section id="course-grid" class="grid" aria-live="polite"></section>
+      <div id="empty-state" class="empty" hidden>
+        No courses found in <code>courses.json</code>. Add at least one course entry to begin.
+      </div>
+    </main>
+
+    <script>
+      async function loadCourses() {
+        const grid = document.getElementById('course-grid');
+        const emptyState = document.getElementById('empty-state');
+
+        try {
+          const response = await fetch('courses.json');
+          if (!response.ok) {
+            throw new Error('Could not load courses.json');
+          }
+
+          const data = await response.json();
+          const courses = Array.isArray(data.courses) ? data.courses : [];
+
+          if (!courses.length) {
+            emptyState.hidden = false;
+            return;
+          }
+
+          for (const course of courses) {
+            const card = document.createElement('article');
+            card.className = 'card';
+
+            const title = document.createElement('h2');
+            title.textContent = course.title || 'Untitled Course';
+
+            const meta = document.createElement('p');
+            meta.className = 'meta';
+            meta.textContent = [course.type || 'Course', course.author].filter(Boolean).join(' • ');
+
+            const desc = document.createElement('p');
+            desc.className = 'desc';
+            desc.textContent = course.description || 'No description provided.';
+
+            const actions = document.createElement('div');
+            actions.className = 'actions';
+
+            if (course.courseFile) {
+              const launch = document.createElement('a');
+              launch.className = 'btn btn-primary';
+              launch.href = `course-viewer.html?course=${encodeURIComponent(course.courseFile)}`;
+              launch.textContent = 'Launch in player';
+              actions.appendChild(launch);
+            }
+
+            if (course.launchUrl) {
+              const open = document.createElement('a');
+              open.className = 'btn btn-secondary';
+              open.href = course.launchUrl;
+              open.target = '_blank';
+              open.rel = 'noopener noreferrer';
+              open.textContent = 'Open package';
+              actions.appendChild(open);
+            }
+
+            card.append(title, meta, desc, actions);
+            grid.appendChild(card);
+          }
+        } catch (error) {
+          emptyState.hidden = false;
+          emptyState.textContent = `Could not load courses.json (${error.message}).`;
+        }
+      }
+
+      loadCourses();
+    </script>
+  </body>
+</html>
